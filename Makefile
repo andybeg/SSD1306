@@ -10,6 +10,8 @@ _DEPS  = ssd1306.h
 DEPS   = $(patsubst %,$(IDIR)/%,$(_DEPS))
 _OBJ   = main.o ssd1306.o ubuntuMono_8pt.o ubuntuMono_16pt.o ubuntuMono_24pt.o ubuntuMono_48pt.o
 OBJ    = $(patsubst %,$(ODIR)/%,$(_OBJ))
+PREFIX = /usr/local
+SYSTEMD_UNIT_DIR = /lib/systemd/system
 
 $(ODIR)/%.o: $(SOURCE)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -23,3 +25,6 @@ clean:
 	rm -f $(ODIR)/*.o $(BUILDDIR)/*~ core $(INCDIR)/*~ 
 
 install:
+	install -d $(PREFIX)/bin/
+	install -m 644 ./build/oled12864 $(PREFIX)/bin/
+	install -m 644 ./build/oled12864.service
