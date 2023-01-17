@@ -1,0 +1,11 @@
+[Unit]
+Description=oled12864
+
+[Service]
+User=root
+WorkingDirectory=/usr/local/bin/
+ExecStart=/usr/local/bin/oled12864 &>/dev/null
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
