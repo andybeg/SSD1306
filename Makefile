@@ -14,10 +14,12 @@ OBJ    = $(patsubst %,$(ODIR)/%,$(_OBJ))
 $(ODIR)/%.o: $(SOURCE)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(BUILDDIR)/ArmbianOLED: $(OBJ)
+$(BUILDDIR)/oled12864: $(OBJ)
 	gcc -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
 
 clean:
 	rm -f $(ODIR)/*.o $(BUILDDIR)/*~ core $(INCDIR)/*~ 
+
+install:
