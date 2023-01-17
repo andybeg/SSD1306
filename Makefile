@@ -27,4 +27,4 @@ clean:
 install:
 	install -d $(PREFIX)/bin/
 	install -m 644 ./build/oled12864 $(PREFIX)/bin/
-	install -m 644 ./build/oled12864.service $(SYSTEMD_UNIT_DIR)
+	install -m 644 ./src/oled12864.service $(SYSTEMD_UNIT_DIR)
